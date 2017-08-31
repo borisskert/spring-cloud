@@ -1,8 +1,13 @@
 spring:
   application:
-    name: helloWorld-service
+    name: hello-world
+  mail:
+    properties:
 
 eureka:
   instance:
     hostname: localhost
     nonSecurePort: 8888
+
+helloworld:
+  text: abc

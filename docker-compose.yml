@@ -24,6 +24,7 @@ services:
     - eureka
     environment:
     - eureka_instance_nonSecurePort=8888
+    - helloworld_text=abc1
   helloworld_1:
     build: ./helloworld
     container_name: springcloud_helloworld_1
@@ -34,3 +35,4 @@ services:
     - eureka
     environment:
     - eureka_instance_nonSecurePort=8889
+    - helloworld_text=abc2
