@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: discovery-service
+
+eureka:
+  instance:
+    hostname: localhost
+    nonSecurePort: 8080
