@@ -4,4 +4,4 @@ eureka:
       defaultZone: http://eureka:8761/eureka/
 
 server:
-    port: 8888
+  port: 8888

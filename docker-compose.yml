@@ -6,11 +6,31 @@ services:
     image: gitlab-registry.adorsys.de/springcloud/eureka:latest
     ports:
     - 8761:8761
-  helloworld:
+  discovery:
+    build: ./discoveryclient
+    container_name: springcloud_discoveryclient
+    image: gitlab-registry.adorsys.de/springcloud/discovery:latest
+    ports:
+    - 8080:8080
+    links:
+    - eureka
+  helloworld_0:
     build: ./helloworld
-    container_name: springcloud_helloworld
+    container_name: springcloud_helloworld_0
     image: gitlab-registry.adorsys.de/springcloud/helloworld:latest
     ports:
     - 8888:8888
     links:
     - eureka
+    environment:
+    - eureka_instance_nonSecurePort=8888
+  helloworld_1:
+    build: ./helloworld
+    container_name: springcloud_helloworld_1
+    image: gitlab-registry.adorsys.de/springcloud/helloworld:latest
+    ports:
+    - 8889:8888
+    links:
+    - eureka
+    environment:
+    - eureka_instance_nonSecurePort=8889
