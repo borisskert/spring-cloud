@@ -1,0 +1,16 @@
+version: '2.1'
+services:
+  eureka:
+    build: ./eureka
+    container_name: springcloud_eureka
+    image: gitlab-registry.adorsys.de/springcloud/eureka:latest
+    ports:
+    - 8761:8761
+  helloworld:
+    build: ./helloworld
+    container_name: springcloud_helloworld
+    image: gitlab-registry.adorsys.de/springcloud/helloworld:latest
+    ports:
+    - 8888:8888
+    links:
+    - eureka
