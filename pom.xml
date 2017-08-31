@@ -19,6 +19,7 @@
         <module>eureka</module>
         <module>helloworld</module>
         <module>discoveryclient</module>
+        <module>ribbon</module>
     </modules>
 
     <dependencyManagement>
