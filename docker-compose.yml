@@ -14,25 +14,41 @@ services:
     - 8080:8080
     links:
     - eureka
+  ribbon:
+    build: ./ribbon
+    container_name: springcloud_ribbon
+    image: gitlab-registry.adorsys.de/springcloud/ribbon:latest
+    ports:
+    - 8088:8088
+    links:
+    - eureka
+    - helloworld_0
+    - helloworld_1
+    - helloworld_2
   helloworld_0:
     build: ./helloworld
     container_name: springcloud_helloworld_0
     image: gitlab-registry.adorsys.de/springcloud/helloworld:latest
-    ports:
-    - 8888:8888
     links:
     - eureka
     environment:
-    - eureka_instance_nonSecurePort=8888
-    - helloworld_text=abc1
+    - eureka_instance_hostname=helloworld_0
+    - helloworld_text=abc0
   helloworld_1:
     build: ./helloworld
     container_name: springcloud_helloworld_1
     image: gitlab-registry.adorsys.de/springcloud/helloworld:latest
-    ports:
-    - 8889:8888
     links:
     - eureka
     environment:
-    - eureka_instance_nonSecurePort=8889
+    - eureka_instance_hostname=helloworld_1
+    - helloworld_text=abc1
+  helloworld_2:
+    build: ./helloworld
+    container_name: springcloud_helloworld_2
+    image: gitlab-registry.adorsys.de/springcloud/helloworld:latest
+    links:
+    - eureka
+    environment:
+    - eureka_instance_hostname=helloworld_2
     - helloworld_text=abc2
