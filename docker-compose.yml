@@ -6,6 +6,12 @@ services:
     image: gitlab-registry.adorsys.de/springcloud/eureka:latest
     ports:
     - 8761:8761
+  config:
+    build: ./config
+    container_name: springcloud_config
+    image: gitlab-registry.adorsys.de/springcloud/config:latest
+    ports:
+    - 8888:8888
   discovery:
     build: ./discoveryclient
     container_name: springcloud_discoveryclient
@@ -31,24 +37,30 @@ services:
     image: gitlab-registry.adorsys.de/springcloud/helloworld:latest
     links:
     - eureka
+    - config
     environment:
     - eureka_instance_hostname=helloworld_0
-    - helloworld_text=abc0
+    - spring_cloud_config_name=hello-world-0
+    restart: always
   helloworld_1:
     build: ./helloworld
     container_name: springcloud_helloworld_1
     image: gitlab-registry.adorsys.de/springcloud/helloworld:latest
     links:
     - eureka
+    - config
     environment:
     - eureka_instance_hostname=helloworld_1
-    - helloworld_text=abc1
+    - spring_cloud_config_name=hello-world-1
+    restart: always
   helloworld_2:
     build: ./helloworld
     container_name: springcloud_helloworld_2
     image: gitlab-registry.adorsys.de/springcloud/helloworld:latest
     links:
     - eureka
+    - config
     environment:
     - eureka_instance_hostname=helloworld_2
-    - helloworld_text=abc2
+    - spring_cloud_config_name=hello-world-2
+    restart: always

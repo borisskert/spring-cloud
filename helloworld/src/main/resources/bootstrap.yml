@@ -1,13 +1,20 @@
 spring:
   application:
     name: hello-world
-  mail:
-    properties:
+  cloud:
+    config:
+      uri: http://config:8888
+      name: hello-world
+      failFast: true
+      retry:
+        maxAttempts: 10
+        initialInterval: 10000
+
+management:
+  security:
+    enabled: false
 
 eureka:
   instance:
     hostname: localhost
     nonSecurePort: 8888
-
-helloworld:
-  text: abc
