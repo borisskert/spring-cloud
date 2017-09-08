@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: config-server
+
+eureka:
+  instance:
+    hostname: localhost
+    nonSecurePort: 8888

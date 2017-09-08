@@ -20,6 +20,7 @@
         <module>helloworld</module>
         <module>discoveryclient</module>
         <module>ribbon</module>
+        <module>config</module>
     </modules>
 
     <dependencyManagement>
