@@ -3,64 +3,80 @@ services:
   eureka:
     build: ./eureka
     container_name: springcloud_eureka
-    image: gitlab-registry.adorsys.de/springcloud/eureka:latest
+    image: local/springcloud/eureka:latest
+    environment:
+      - JAVA_OPTS=-Xmx128m
     ports:
     - 8761:8761
+    networks:
+      - spring_cloud_network
   config:
     build: ./config
     container_name: springcloud_config
-    image: gitlab-registry.adorsys.de/springcloud/config:latest
-    ports:
-    - 8888:8888
+    image: local/springcloud/config:latest
+    environment:
+      - JAVA_OPTS=-Xmx128m
+    networks:
+      - spring_cloud_network
   discovery:
     build: ./discoveryclient
     container_name: springcloud_discoveryclient
-    image: gitlab-registry.adorsys.de/springcloud/discovery:latest
-    ports:
-    - 8080:8080
-    links:
-    - eureka
+    image: local/springcloud/discovery:latest
+    environment:
+      - JAVA_OPTS=-Xmx128m
+    networks:
+      - spring_cloud_network
   ribbon:
     build: ./ribbon
     container_name: springcloud_ribbon
-    image: gitlab-registry.adorsys.de/springcloud/ribbon:latest
+    image: local/springcloud/ribbon:latest
+    environment:
+      - JAVA_OPTS=-Xmx128m
+    networks:
+      - spring_cloud_network
+  zuul:
+    build: ./zuul
+    container_name: springcloud_zuul
+    image: local/springcloud/zuul:latest
+    environment:
+      - JAVA_OPTS=-Xmx128m
     ports:
-    - 8088:8088
-    links:
-    - eureka
-    - helloworld_0
-    - helloworld_1
-    - helloworld_2
-  helloworld_0:
+      - 8081:8081
+    networks:
+      - spring_cloud_network
+  helloworld-0:
     build: ./helloworld
     container_name: springcloud_helloworld_0
-    image: gitlab-registry.adorsys.de/springcloud/helloworld:latest
-    links:
-    - eureka
-    - config
+    image: local/springcloud/helloworld:latest
     environment:
-    - eureka_instance_hostname=helloworld_0
-    - spring_cloud_config_name=hello-world-0
+      - JAVA_OPTS=-Xmx128m
+      - eureka_instance_hostname=helloworld-0
+      - spring_cloud_config_name=hello-world-0
     restart: always
-  helloworld_1:
+    networks:
+      - spring_cloud_network
+  helloworld-1:
     build: ./helloworld
     container_name: springcloud_helloworld_1
-    image: gitlab-registry.adorsys.de/springcloud/helloworld:latest
-    links:
-    - eureka
-    - config
+    image: local/springcloud/helloworld:latest
     environment:
-    - eureka_instance_hostname=helloworld_1
-    - spring_cloud_config_name=hello-world-1
+      - JAVA_OPTS=-Xmx128m
+      - eureka_instance_hostname=helloworld-1
+      - spring_cloud_config_name=hello-world-1
     restart: always
-  helloworld_2:
+    networks:
+      - spring_cloud_network
+  helloworld-2:
     build: ./helloworld
     container_name: springcloud_helloworld_2
-    image: gitlab-registry.adorsys.de/springcloud/helloworld:latest
-    links:
-    - eureka
-    - config
+    image: local/springcloud/helloworld:latest
     environment:
-    - eureka_instance_hostname=helloworld_2
-    - spring_cloud_config_name=hello-world-2
+      - JAVA_OPTS=-Xmx128m
+      - eureka_instance_hostname=helloworld-2
+      - spring_cloud_config_name=hello-world-2
     restart: always
+    networks:
+      - spring_cloud_network
+
+networks:
+  spring_cloud_network:

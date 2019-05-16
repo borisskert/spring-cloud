@@ -1,0 +1,8 @@
+server:
+  port: 8081
+
+zuul:
+  routes:
+    hello-world:
+      path: /hello/**
+      url: http://ribbon:8088/hello
