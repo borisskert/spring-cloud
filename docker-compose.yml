@@ -3,19 +3,19 @@ services:
   eureka:
     build: ./eureka
     container_name: springcloud_eureka
-    image: gitlab-registry.adorsys.de/springcloud/eureka:latest
+    image: local/springcloud/eureka:latest
     ports:
     - 8761:8761
   config:
     build: ./config
     container_name: springcloud_config
-    image: gitlab-registry.adorsys.de/springcloud/config:latest
+    image: local/springcloud/config:latest
     ports:
     - 8888:8888
   discovery:
     build: ./discoveryclient
     container_name: springcloud_discoveryclient
-    image: gitlab-registry.adorsys.de/springcloud/discovery:latest
+    image: local/springcloud/discovery:latest
     ports:
     - 8080:8080
     links:
@@ -23,7 +23,7 @@ services:
   ribbon:
     build: ./ribbon
     container_name: springcloud_ribbon
-    image: gitlab-registry.adorsys.de/springcloud/ribbon:latest
+    image: local/springcloud/ribbon:latest
     ports:
     - 8088:8088
     links:
@@ -34,7 +34,7 @@ services:
   helloworld_0:
     build: ./helloworld
     container_name: springcloud_helloworld_0
-    image: gitlab-registry.adorsys.de/springcloud/helloworld:latest
+    image: local/springcloud/helloworld:latest
     links:
     - eureka
     - config
@@ -45,7 +45,7 @@ services:
   helloworld_1:
     build: ./helloworld
     container_name: springcloud_helloworld_1
-    image: gitlab-registry.adorsys.de/springcloud/helloworld:latest
+    image: local/springcloud/helloworld:latest
     links:
     - eureka
     - config
@@ -56,7 +56,7 @@ services:
   helloworld_2:
     build: ./helloworld
     container_name: springcloud_helloworld_2
-    image: gitlab-registry.adorsys.de/springcloud/helloworld:latest
+    image: local/springcloud/helloworld:latest
     links:
     - eureka
     - config
