@@ -19,6 +19,7 @@
         <module>discoveryclient</module>
         <module>ribbon</module>
         <module>config</module>
+        <module>zuul</module>
     </modules>
 
     <dependencyManagement>
