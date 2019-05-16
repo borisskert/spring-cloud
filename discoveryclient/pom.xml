@@ -8,7 +8,7 @@
 
     <parent>
         <artifactId>main</artifactId>
-        <groupId>de.adorsys.springcloud</groupId>
+        <groupId>com.github.borisskert.springcloud</groupId>
         <version>0.1.0-SNAPSHOT</version>
     </parent>
 

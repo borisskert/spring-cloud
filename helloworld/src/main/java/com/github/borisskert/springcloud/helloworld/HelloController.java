@@ -1,4 +1,4 @@
-package de.adorsys.springcloud.helloworld;
+package com.github.borisskert.springcloud.helloworld;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;

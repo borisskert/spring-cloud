@@ -1,4 +1,4 @@
-package de.adorsys.springcloud.ribbon;
+package com.github.borisskert.springcloud.ribbon;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

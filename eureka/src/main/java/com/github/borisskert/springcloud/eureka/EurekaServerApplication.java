@@ -1,4 +1,4 @@
-package de.adorsys.springcloud.eureka;
+package com.github.borisskert.springcloud.eureka;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;

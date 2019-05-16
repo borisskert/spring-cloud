@@ -1,4 +1,4 @@
-package de.adorsys.springcloud.discoveryclient;
+package com.github.borisskert.springcloud.discoveryclient;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
