@@ -28,10 +28,10 @@ services:
     - 8088:8088
     links:
     - eureka
-    - helloworld_0
-    - helloworld_1
-    - helloworld_2
-  helloworld_0:
+    - helloworld-0
+    - helloworld-1
+    - helloworld-2
+  helloworld-0:
     build: ./helloworld
     container_name: springcloud_helloworld_0
     image: local/springcloud/helloworld:latest
@@ -39,10 +39,10 @@ services:
     - eureka
     - config
     environment:
-    - eureka_instance_hostname=helloworld_0
+    - eureka_instance_hostname=helloworld-0
     - spring_cloud_config_name=hello-world-0
     restart: always
-  helloworld_1:
+  helloworld-1:
     build: ./helloworld
     container_name: springcloud_helloworld_1
     image: local/springcloud/helloworld:latest
@@ -50,10 +50,10 @@ services:
     - eureka
     - config
     environment:
-    - eureka_instance_hostname=helloworld_1
+    - eureka_instance_hostname=helloworld-1
     - spring_cloud_config_name=hello-world-1
     restart: always
-  helloworld_2:
+  helloworld-2:
     build: ./helloworld
     container_name: springcloud_helloworld_2
     image: local/springcloud/helloworld:latest
@@ -61,6 +61,6 @@ services:
     - eureka
     - config
     environment:
-    - eureka_instance_hostname=helloworld_2
+    - eureka_instance_hostname=helloworld-2
     - spring_cloud_config_name=hello-world-2
     restart: always
