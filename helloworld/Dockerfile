@@ -2,8 +2,8 @@ FROM amazoncorretto:8
 MAINTAINER https://github.com/borisskert/spring-cloud
 
 WORKDIR /opt/springcloud
-COPY ./target/hello-world-*.jar .
+COPY ./target/hello-world.jar .
 
 EXPOSE 8761
 
-CMD exec $JAVA_HOME/bin/java $JAVA_OPTS -jar /opt/springcloud/hello-world-*.jar
+CMD exec $JAVA_HOME/bin/java $JAVA_OPTS -jar /opt/springcloud/hello-world.jar
