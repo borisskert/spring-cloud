@@ -1,4 +1,4 @@
-FROM amazoncorretto:8
+FROM amazoncorretto:11
 MAINTAINER https://github.com/borisskert/spring-cloud
 
 WORKDIR /opt/springcloud
